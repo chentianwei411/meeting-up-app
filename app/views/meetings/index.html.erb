@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Meetings</h1>
+<div class="col-md-12">
+  <h1>Meetings</h1>
+  <div style="margin-left: 90%;">
+    <%= link_to("New meeting", new_meeting_path, class: "btn btn-primary btn-sm") %>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @meetings.each do |meeting| %>
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= meeting.title %></td>
-        <td><%= meeting.description %></td>
-        <td><%= link_to 'Show', meeting %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Description</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Meeting', new_meeting_path %>
+    <tbody>
+      <% @meetings.each do |meeting| %>
+        <tr>
+          <td><%= link_to(meeting.title, meeting_path(meeting)) %></td>
+          <td><%= meeting.description %></td>
+          <td><%= link_to 'Edit', edit_meeting_path(meeting), class: "btn btn-default" %></td>
+          <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
