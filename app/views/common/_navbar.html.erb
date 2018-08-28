@@ -15,7 +15,7 @@
         <% if user_signed_in? %>
           <div class="dropdown nav-item nav-link">
             <a href="#" class="dropdown-toggle mr-1" data-toggle="dropdown">
-              <%= current_user.username %> <span class="caret"></span>
+              <%= current_user.email %> <span class="caret"></span>
             </a>
             <div class="dropdown-menu">
               <%= link_to content_tag(:i, "设置", class:"fas fa-cog"), edit_user_registration_path, class:"dropdown-item" %>

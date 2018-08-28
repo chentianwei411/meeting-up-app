@@ -1,4 +1,5 @@
 class MeetingsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
 
   # GET /meetings
@@ -10,6 +11,7 @@ class MeetingsController < ApplicationController
   # GET /meetings/1
   # GET /meetings/1.json
   def show
+    @comments = @meeting.comments.includes(:user)
   end
 
   # GET /meetings/new
@@ -25,9 +27,9 @@ class MeetingsController < ApplicationController
   # POST /meetings.json
   def create
     @meeting = Meeting.new(meeting_params)
+
     respond_to do |format|
       if @meeting.save
-        Meeting.update_counters(@meeting.id, comments_count: 1)
         format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
         format.json { render :show, status: :created, location: @meeting }
       else

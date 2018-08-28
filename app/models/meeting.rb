@@ -1,4 +1,4 @@
 class Meeting < ApplicationRecord
   has_many :comments
-  belongs_to :user
+  # belongs_to :user
 end
