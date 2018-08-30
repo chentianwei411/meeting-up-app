@@ -10,12 +10,6 @@ class Api::V1::SessionsController < Api::V1::BaseController
     end
   end
 
-  def api_error(opts={})
-    # 可以只返回状态码，使用nothing: true
-    # render nothing: true, status: opts[:status]
-    render :json => {:message => 'login_in failed!'}, status: opts[:status]
-  end
-
   private
 
   def create_params
